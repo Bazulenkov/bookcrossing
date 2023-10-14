@@ -23,12 +23,13 @@
         <p>ISBN: {{ book.ISBN }}</p>
         <h4>Описание:</h4>
         <p>{{ book.description|linebreaksbr }}</p>
-        <h4>Местоположение:</h4>
-        <p>{{ book.place }}</p>
         <h5>Категории:</h5>
         {% for category in book.category %}
-        <a href= # >{{ category }}</a>
+          <a href="{% url 'catalog:category_detail' category %}"
+                    class="btn btn-primary mt-3">{{ category }}</a> 
         {% endfor %}
+          <h4>Местоположение:</h4>
+          <p>{{ book.place }}</p>
       </div>
     </div>
   </div>

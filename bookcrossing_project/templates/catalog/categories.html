@@ -6,28 +6,23 @@
 {% block content %}
   <div class="container mt-5">
     <h1>Информация о категориях</h1>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="card mb-4">
-          <div class="card-body">
-            <h5 class="card-title">Категория 1</h5>
-            <p class="card-text">Описание категории 1.</p>
-            <p class="card-text">Количество книг из этой категории: 10</p>
-            <a href="category.html" class="btn btn-primary">Просмотреть</a>
+    <div class="row mt-5">
+      {% for category in categories %}
+      <div class="col-md-6 mb-6">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h5 class="card-title">{{ category.name }}</h5>
+                  <p class="card-text">{{ category.description }}</p>
+                  <a href="{% url 'catalog:category_detail' category.name %}"
+                                  class="btn btn-primary mt-3">Подробнее</a> 
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card mb-4">
-          <div class="card-body">
-            <h5 class="card-title">Категория 2</h5>
-            <p class="card-text">Описание категории 2.</p>
-            <p class="card-text">Количество книг из этой категории: 15</p>
-            <a href="category.html" class="btn btn-primary">Просмотреть</a>
-          </div>
-        </div>
-      </div>
-      <!-- Repeat the above card section for each category dynamically -->
+      {% endfor %}
     </div>
   </div>
 {% endblock %}
