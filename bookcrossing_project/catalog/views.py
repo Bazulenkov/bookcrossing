@@ -14,20 +14,15 @@ def categories_view(request):
 
 
 books_ = {book['id']:book for book in BOOKS}
-category_book_list = {cat: [] for cat in set(category 
+split_books_by_categories = set(category 
                         for book in books_.values() 
-                        for category in book['category'])}
-
-
-for book in books_.values():
-    for cat in book['category']:
-        category_book_list[cat].append(book)
+                        for category in book['category'])
 
 
 def category_detail_view(request, category_slug):
-        if category_slug in category_book_list:
+        if category_slug in split_books_by_categories:
             context = {'category': category_slug,
-                    'category_book_list': category_book_list[category_slug]}
+                    'category_book_list': BOOKS}  # category_book_list[category_slug]
             return render(request, 'catalog/category.html', context)
         else:
             raise Http404(f'Страница с category: {category_slug} не существует...')

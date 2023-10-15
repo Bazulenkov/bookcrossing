@@ -12,6 +12,7 @@
       <div class="row mt-4">
 
         {% for book in category_book_list %}
+        {% if category in book.category %}
           <div class="col-md-4 mb-4">
             <div class="card">
               <div class="position-relative">
@@ -39,6 +40,7 @@
               </div>
             </div>
           </div>
+        {% endif %}
         {% endfor %}
       </div>
   </div>
