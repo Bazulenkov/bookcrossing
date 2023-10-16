@@ -26,7 +26,6 @@
                 <p>ISBN: {{ book.ISBN }}</p>
                 <h4>Описание:</h4>
                 <p>
-                    {% for category in book.categories %}
                     {{ book.description|linebreaksbr }}</p>
                 <h4>Местоположение:</h4>
                 <p>{{ book.place }}</p>

@@ -1,7 +1,7 @@
-from data import BOOKS, CATEGORIES
-
 from django.http import Http404
 from django.shortcuts import render
+
+from data import BOOKS, CATEGORIES
 
 
 def index_view(request):
